@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f1e8">
+    <meta name="description" content="Aqşin Babayevin həyat yolu, yaradıcılığı və ədəbi irsi haqqında rəqəmsal xatirə.">
+    <title>Aqşin Babayev — ədəbi irs</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="Ana səhifə">AB<span>·</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menyunu aç">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Əsas naviqasiya">
+        <a href="#about">Haqqında</a>
+        <a href="#timeline">Həyat yolu</a>
+        <a href="#works">Yaradıcılığı</a>
+        <a href="#gallery">Qalereya</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">YAZIÇI · ŞAİR · ALİM</p>
+          <h1>Aqşin<br><em>Babayev</em></h1>
+          <p class="hero-intro">Sözə, elmə və Azərbaycan mədəniyyətinə həsr olunmuş bir ömür.</p>
+          <a class="text-link" href="#about">Həyatını kəşf et <span aria-hidden="true">↘</span></a>
+          <span class="hero-years">1936 — 2020</span>
+        </div>
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="assets/images/portret1.jpg" alt="Aqşin Babayevin portreti">
+          <span class="image-caption">Aqşin Babayev</span>
+        </div>
+        <span class="hero-index" aria-hidden="true">01 / 04</span>
+      </section>
+
+      <section class="intro section-pad" id="about">
+        <p class="eyebrow">AQŞİN ƏLİSƏTTAR OĞLU BABAYEV</p>
+        <div class="intro-grid">
+          <h2>Sözlə yaşayan<br><em>bir ömür.</em></h2>
+          <div class="intro-text">
+            <p>Aqşin Babayev 23 noyabr 1936-cı ildə Bakıda anadan olub. Jurnalistika, radio və televiziya fəaliyyəti, elmi araşdırmaları və zəngin ədəbi yaradıcılığı ilə Azərbaycan mədəniyyətinə dəyərli töhfələr verib.</p>
+            <p>Bu səhifə onun həyat yoluna və gələcək nəsillərə miras qoyduğu mənəvi irsə ehtiramdır.</p>
+            <a class="text-link" href="#timeline">Həyat yoluna bax <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+        <figure class="wide-photo">
+          <img src="assets/images/portretlife.jpg" alt="Aqşin Babayevin həyatından portret">
+          <figcaption>Yaddaşda yaşayan söz və düşüncə.</figcaption>
+        </figure>
+      </section>
+
+      <section class="timeline-section section-pad" id="timeline">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">1936 — 2020</p>
+            <h2>Həyat <em>yolu</em></h2>
+          </div>
+          <p>Ədəbi və elmi fəaliyyətlə zəngin ömrün seçilmiş məqamları.</p>
+        </div>
+        <div class="timeline-filters" role="group" aria-label="Dövr üzrə süzgəc">
+          <button class="filter-button is-active" type="button" data-period="all" aria-pressed="true">Hamısı</button>
+          <button class="filter-button" type="button" data-period="early" aria-pressed="false">1936–1959</button>
+          <button class="filter-button" type="button" data-period="middle" aria-pressed="false">1960–1989</button>
+          <button class="filter-button" type="button" data-period="late" aria-pressed="false">1990–2020</button>
+        </div>
+        <ol class="timeline-list" id="timeline-list" aria-live="polite"></ol>
+      </section>
+
+      <section class="works-section section-pad" id="works">
+        <p class="eyebrow">ƏDƏBİ VƏ ELMİ İRS</p>
+        <div class="section-heading">
+          <h2>Yaradıcılıq <em>dünyası</em></h2>
+          <p>Nəsr, poeziya, dramaturgiya və ədəbiyyatşünaslıq sahələrini əhatə edən irs.</p>
+        </div>
+        <div class="works-grid">
+          <article class="work-card">
+            <span class="work-number">01</span>
+            <h3>Nəsr</h3>
+            <p>İnsan münasibətləri, həyat və zaman haqqında hekayə və nəsr əsərləri.</p>
+            <span class="work-example">“Bir ürəyin hərarəti” · “Kişilər az yaşadı”</span>
+          </article>
+          <article class="work-card">
+            <span class="work-number">02</span>
+            <h3>Poeziya</h3>
+            <p>Duyğuların, yaddaşın və insanın daxili dünyasının poetik ifadəsi.</p>
+            <span class="work-example">“Ayrılıq” · “Dünya vəfalıdır”</span>
+          </article>
+          <article class="work-card">
+            <span class="work-number">03</span>
+            <h3>Elm və dramaturgiya</h3>
+            <p>Türk dramaturgiyası, Nazim Hikmət və Azərbaycan ədəbiyyatı haqqında araşdırmalar.</p>
+            <span class="work-example">“Müasir türk dramaturgiyası”</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery-section section-pad" id="gallery">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">FOTO XATİRƏLƏR</p>
+            <h2>Yaddaşdan <em>izlər</em></h2>
+          </div>
+          <p>Şəkli böyütmək üçün üzərinə kliklə.</p>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-item gallery-item-large" type="button" data-image="assets/images/Picture2.jpg" data-caption="Aqşin Babayev">
+            <img src="assets/images/Picture2.jpg" alt="Aqşin Babayevin fotoşəkli" loading="lazy">
+            <span>Aqşin Babayev <span aria-hidden="true">↗</span></span>
+          </button>
+          <button class="gallery-item" type="button" data-image="assets/images/picture3.jpg" data-caption="Foto xatirə">
+            <img src="assets/images/picture3.jpg" alt="Aqşin Babayev haqqında foto xatirə" loading="lazy">
+            <span>Foto xatirə <span aria-hidden="true">↗</span></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="closing">
+        <p class="eyebrow">ƏBƏDİ YADDAŞ</p>
+        <p class="closing-quote">“Çalışmaq da ibadətdir.”</p>
+        <p class="closing-credit">— Aqşin Babayev</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="#home">AB<span>·</span></a>
+      <p>Aqşin Babayevin xatirəsinə ehtiramla.</p>
+      <a class="back-top" href="#home">Yuxarı qayıt ↑</a>
+    </footer>
+
+    <dialog class="image-dialog" aria-label="Böyüdülmüş foto">
+      <button class="dialog-close" type="button" aria-label="Bağla">×</button>
+      <img src="" alt="">
+      <p></p>
+    </dialog>
+  </body>
+</html>
