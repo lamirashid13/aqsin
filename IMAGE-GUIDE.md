@@ -1,5 +1,11 @@
 # IMAGE GUIDE
 
+## Həyat bölməsinin portreti
+
+- Fayl: `assets/images/portretlife2.jpeg`
+- `index.html` daxilindəki Həyat bölməsi bu portreti `./assets/images/portretlife2.jpeg` yolu ilə göstərir.
+- Fayl adının hərf ölçüsünü və `.jpeg` uzantısını dəyişməyin.
+
 ## Ortaq yer tutucular
 
 Proyektin şəkil strukturu aşağıdakı kimi qurulub:
