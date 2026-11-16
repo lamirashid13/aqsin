@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aqşin Babayev | Audio Arxiv</title>
+    <meta name="description" content="Aqşin Babayevin radiolayihəsi və audio arxivi." />
+    <meta name="theme-color" content="#1f262d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="audio-page-body" data-page="audio">
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a href="index.html#home" class="site-logo" aria-label="Aqşin Babayev ana səhifə">Aqşin Babayev</a>
+
+        <button class="nav-toggle" type="button" aria-label="Menyu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Əsas naviqasiya">
+          <a href="index.html#home">Ana səhifə</a>
+          <a href="index.html#life">Həyat yolu</a>
+          <a href="index.html#about">Xronologiya</a>
+          <a href="index.html#press">Elmi irsi</a>
+          <a href="index.html#books-gallery">Kitablar</a>
+          <a href="audio.html" aria-current="page">Audio</a>
+          <a href="index.html#wisdom">Xatirələr</a>
+          <a href="index.html#tributes">Müsahibələr</a>
+          <a href="index.html#contacts">Əlaqə</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="audio-page">
+      <section class="audio-hero">
+        <div class="container audio-hero-inner">
+          <div class="audio-hero-copy">
+            <span class="section-kicker">AQŞİN BABAYEV · AUDIO ARXİV</span>
+            <h1>Yazıçı və publisist Aqşin Babayevin 'Biri var, biri yox' radiolayihəsi</h1>
+          </div>
+
+          <div class="audio-hero-visual" aria-hidden="true">
+            <svg viewBox="0 0 160 160" role="img" aria-hidden="true">
+              <circle cx="80" cy="80" r="58" class="audio-circle" />
+              <circle cx="80" cy="80" r="38" class="audio-circle audio-circle-inner" />
+              <path d="M80 32v48M80 80l26-18M80 80l-26 18" class="audio-wave" />
+              <rect x="62" y="96" width="36" height="26" rx="9" class="audio-mic" />
+              <path d="M55 76c0 13 11 24 25 24s25-11 25-24" class="audio-wave" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="audio-player-section" aria-label="Audio baxım paneli">
+        <div class="container audio-player-shell">
+          <div class="audio-player">
+            <div class="audio-player-header">
+              <span class="audio-player-label">Seçilmiş səs</span>
+            </div>
+
+            <h2 id="audioTrackTitle" class="audio-track-title">Aqşin Babayev</h2>
+
+            <div class="audio-progress-wrap">
+              <input id="audioProgress" class="audio-progress" type="range" min="0" max="0" value="0" step="0.1" aria-label="Play progress" />
+            </div>
+
+            <div class="audio-time-row" aria-live="polite">
+              <span id="audioCurrentTime">00:00</span>
+              <span id="audioRemaining">-00:00</span>
+            </div>
+
+            <div class="audio-controls">
+              <button type="button" id="rewindButton" class="audio-control" aria-label="10 saniyə geri" title="10 saniyə geri"></button>
+              <button type="button" id="playPauseButton" class="audio-control is-primary" aria-label="Səsi başlat" title="Başlat"></button>
+              <button type="button" id="forwardButton" class="audio-control" aria-label="10 saniyə irəli" title="10 saniyə irəli"></button>
+            </div>
+          </div>
+
+          <aside class="audio-playlist-shell" aria-label="Audio siyahısı">
+            <div class="audio-playlist-header">
+              <span>Audio siyahısı</span>
+            </div>
+            <ul id="audioPlaylist" class="audio-playlist"></ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="container footer-inner">
+        <h2>Aqşin Babayev</h2>
+        <div class="footer-social" aria-label="Sosial media">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="X">x</a>
+          <a href="#" aria-label="TikTok">♪</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Pinterest">P</a>
+        </div>
+        <div class="footer-contact">
+          <span>Aqşin Babayev@demolink.org</span>
+          <span>800-2345-6789</span>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Aqşin Babayev</div>
+    </footer>
+
+    <script src="assets/js/site-data.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

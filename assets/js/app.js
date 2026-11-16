@@ -835,3 +835,214 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 })();
+
+(() => {
+  const playlistRoot = document.getElementById("audioPlaylist");
+  const titleElement = document.getElementById("audioTrackTitle");
+  const progressElement = document.getElementById("audioProgress");
+  const currentTimeElement = document.getElementById("audioCurrentTime");
+  const remainingElement = document.getElementById("audioRemaining");
+  const playPauseButton = document.getElementById("playPauseButton");
+  const rewindButton = document.getElementById("rewindButton");
+  const forwardButton = document.getElementById("forwardButton");
+
+  if (!playlistRoot || !titleElement || !progressElement || !currentTimeElement || !remainingElement || !playPauseButton || !rewindButton || !forwardButton) {
+    return;
+  }
+
+  const tracks = [
+    { title: "Adil İsgəndərov", src: "assets/mp3/Adil İsgəndərov.mp3" },
+    { title: "Aqşin Babayev", src: "assets/mp3/Aqşin Babayev.mp3" },
+    { title: "Cahangir Cahangirov", src: "assets/mp3/Cahangir Cahangirov.mp3" },
+    { title: "Emin Sabitoğlu", src: "assets/mp3/Emin Sabitoğlu.mp3" },
+    { title: "Gülarə Əliyeva", src: "assets/mp3/Gülarə Əliyeva.mp3" },
+    { title: "Gülağa Məmmədov", src: "assets/mp3/Gülağa Məmmədov.mp3" },
+    { title: "Hacıbaba Bağırov", src: "assets/mp3/Hacıbaba Bağırov.mp3" },
+    { title: "Hacıbaba Hüseynov", src: "assets/mp3/Hacıbaba Hüseynov.mp3" },
+    { title: "Həkim Qəni", src: "assets/mp3/Həkim Qəni.mp3" },
+    { title: "Həsən Ebluc", src: "assets/mp3/Həsən Ebluc.mp3" },
+    { title: "Mirzə Babayev", src: "assets/mp3/Mirzə Babayev.mp3" },
+    { title: "Müslüm Maqomayev", src: "assets/mp3/Müslüm Maqomayev.mp3" },
+    { title: "Məmmədbağır Bagırzadə", src: "assets/mp3/Məmmədbağır Bagırzadə.mp3" },
+    { title: "Nazim Hikmət", src: "assets/mp3/Nazim Hikmət.mp3" },
+    { title: "Niyazi", src: "assets/mp3/Niyazi.mp3" },
+    { title: "Nüsrət Kəsəmənli", src: "assets/mp3/Nüsrət Kəsəmənli.mp3" },
+    { title: "Nəsibə Zeynalova", src: "assets/mp3/Nəsibə Zeynalova.mp3" },
+    { title: "Nəsir İmanquliyev", src: "assets/mp3/Nəsir İmanquliyev.mp3" },
+    { title: "Osman Mirzəyev", src: "assets/mp3/Osman Mirzəyev.mp3" },
+    { title: "Qara Qarayev", src: "assets/mp3/Qara Qarayev.mp3" },
+    { title: "Qasım Qasımzadə", src: "assets/mp3/Qasım Qasımzadə.mp3" },
+    { title: "Rafiq Babayev", src: "assets/mp3/Rafiq Babayev.mp3" },
+    { title: "Rauf Kazimovski", src: "assets/mp3/Rauf Kazimovski.mp3" },
+    { title: "Rübabə Muradova", src: "assets/mp3/Rübabə Muradova.mp3" },
+    { title: "Sabit Rəhman", src: "assets/mp3/Sabit Rəhman.mp3" },
+    { title: "Salam & Qəmər Salamzadə", src: "assets/mp3/Salam & Qəmər Salamzadə.mp3" },
+    { title: "Sara Qədimova", src: "assets/mp3/Sara Qədimova.mp3" },
+    { title: "Səid Rüstəmov", src: "assets/mp3/Səid Rüstəmov.mp3" },
+    { title: "Vasif Adıgözəlov", src: "assets/mp3/Vasif Adıgözəlov.mp3" },
+    { title: "Xəlil Rza Ulutürk", src: "assets/mp3/Xəlil Rza Ulutürk.mp3" },
+    { title: "Zeynal Cabbarzadə", src: "assets/mp3/Zeynal Cabbarzadə.mp3" },
+    { title: "İlyas Əfəndiyev", src: "assets/mp3/İlyas Əfəndiyev.mp3" },
+    { title: "Əhsən Dadaşov", src: "assets/mp3/Əhsən Dadaşov.mp3" },
+    { title: "Əkrəm Cəfər", src: "assets/mp3/Əkrəm Cəfər.mp3" },
+    { title: "Əli Kərim", src: "assets/mp3/Əli Kərim.mp3" },
+    { title: "Əliağa Vahid", src: "assets/mp3/Əliağa Vahid.mp3" },
+    { title: "Ələsgər Ələkbərov", src: "assets/mp3/Ələsgər Ələkbərov.mp3" },
+    { title: "Ənvər Əlibəyli", src: "assets/mp3/Ənvər Əlibəyli.mp3" }
+  ];
+
+  const audio = new Audio();
+  audio.preload = "metadata";
+
+  let currentIndex = 0;
+  let isPlaying = false;
+
+  const playIcon = "<svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M8 5.5v13l10-6.5L8 5.5z' /></svg>";
+  const pauseIcon = "<svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M7 5h4v14H7zm6 0h4v14h-4z' /></svg>";
+  const rewindIcon = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M11 7L5 12l6 5' /><path d='M19 7l-6 5 6 5' /></svg>";
+  const forwardIcon = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M13 7l6 5-6 5' /><path d='M5 7l6 5-6 5' /></svg>";
+
+  function formatTime(value) {
+    if (!Number.isFinite(value) || value < 0) return "00:00";
+    const totalSeconds = Math.floor(value);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  function syncPlayButton() {
+    playPauseButton.innerHTML = isPlaying ? pauseIcon : playIcon;
+    playPauseButton.setAttribute("aria-label", isPlaying ? "İfa səssizləşdir" : "Səsi başlat");
+    playPauseButton.title = isPlaying ? "Pauza" : "Başlat";
+  }
+
+  function updatePlaylist() {
+    const buttons = playlistRoot.querySelectorAll(".audio-track-button");
+    buttons.forEach((button, index) => {
+      button.classList.toggle("is-active", index === currentIndex);
+      button.setAttribute("aria-pressed", String(index === currentIndex));
+    });
+  }
+
+  function updateProgressBar() {
+    const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    const current = Number.isFinite(audio.currentTime) ? audio.currentTime : 0;
+    const safeCurrent = Math.min(Math.max(current, 0), duration || 0);
+    const percent = duration > 0 ? (safeCurrent / duration) * 100 : 0;
+
+    progressElement.style.setProperty("--progress", `${percent}%`);
+    progressElement.max = String(duration || 0);
+    progressElement.value = String(safeCurrent);
+    currentTimeElement.textContent = formatTime(safeCurrent);
+    remainingElement.textContent = duration > 0 ? `-${formatTime(Math.max(0, duration - safeCurrent))}` : "-00:00";
+  }
+
+  function loadTrack(index, autoplay = false) {
+    currentIndex = (index + tracks.length) % tracks.length;
+    const track = tracks[currentIndex];
+    titleElement.textContent = track.title;
+    audio.src = track.src;
+    audio.load();
+    audio.currentTime = 0;
+    updatePlaylist();
+    updateProgressBar();
+
+    if (autoplay) {
+      audio.play().then(() => {
+        isPlaying = true;
+        syncPlayButton();
+      }).catch(() => {
+        isPlaying = false;
+        syncPlayButton();
+      });
+    } else {
+      isPlaying = false;
+      syncPlayButton();
+    }
+  }
+
+  function togglePlayback() {
+    if (!audio.src) {
+      loadTrack(currentIndex, true);
+      return;
+    }
+
+    if (audio.paused) {
+      audio.play().then(() => {
+        isPlaying = true;
+        syncPlayButton();
+      }).catch(() => {
+        isPlaying = false;
+        syncPlayButton();
+      });
+      return;
+    }
+
+    audio.pause();
+    isPlaying = false;
+    syncPlayButton();
+  }
+
+  function seekBy(offset) {
+    const nextTime = Math.min(Math.max(audio.currentTime + offset, 0), audio.duration || 0);
+    audio.currentTime = nextTime;
+    updateProgressBar();
+  }
+
+  tracks.forEach((track, index) => {
+    const item = document.createElement("li");
+    item.className = "audio-playlist-item";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "audio-track-button";
+    button.setAttribute("aria-label", `Səsi seç: ${track.title}`);
+    button.innerHTML = `
+      <span class="audio-track-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v11.1a3.5 3.5 0 1 1-2.5-3.34V3h2.5z" />
+          <path d="M12 14.2a3.5 3.5 0 0 1 3.5 3.5" />
+        </svg>
+      </span>
+      <span class="audio-track-text">
+        <span class="audio-track-name">${track.title}</span>
+        <span class="audio-track-meta">Track ${String(index + 1).padStart(2, "0")}</span>
+      </span>
+    `;
+    button.addEventListener("click", () => loadTrack(index, true));
+    item.appendChild(button);
+    playlistRoot.appendChild(item);
+  });
+
+  playPauseButton.addEventListener("click", togglePlayback);
+  rewindButton.addEventListener("click", () => seekBy(-10));
+  forwardButton.addEventListener("click", () => seekBy(10));
+  progressElement.addEventListener("input", (event) => {
+    const value = Number(event.target.value);
+    if (!Number.isFinite(value)) return;
+    audio.currentTime = value;
+    updateProgressBar();
+  });
+
+  audio.addEventListener("loadedmetadata", updateProgressBar);
+  audio.addEventListener("timeupdate", updateProgressBar);
+  audio.addEventListener("play", () => {
+    isPlaying = true;
+    syncPlayButton();
+  });
+  audio.addEventListener("pause", () => {
+    isPlaying = false;
+    syncPlayButton();
+  });
+  audio.addEventListener("ended", () => {
+    isPlaying = false;
+    syncPlayButton();
+    audio.currentTime = 0;
+    updateProgressBar();
+  });
+
+  rewindButton.innerHTML = rewindIcon;
+  forwardButton.innerHTML = forwardIcon;
+  syncPlayButton();
+  loadTrack(0, false);
+})();
